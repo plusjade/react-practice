@@ -110,6 +110,56 @@ button.disabled {
   font-size: 24px;
 }
 
+.wrap {
+   margin-bottom: 40px;
+}
+.wrap h1 {
+   margin: 40px 0;
+}
+
+#admin-wrap {
+}
+#admin-wrap h1 {
+  text-align: center;
+}
+#admin-wrap ol {
+  text-align: left;
+}
+#admin-wrap ol li {
+  margin-bottom: 5px;
+  padding: 8px;
+}
+#admin-wrap ol li.error {
+  background-color: #FFEBEE;
+}
+#admin-wrap ol li.valid {
+  background-color: #DCEDC8;
+}
+
+#admin-wrap .users, #admin-wrap .report {
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+}
+#admin-wrap .users li {
+  cursor: pointer;
+  position: relative;
+}
+#admin-wrap .users li:hover {
+  text-decoration: underline;
+  background-color: #FFF59D;
+}
+#admin-wrap .users li.active {
+  background-color: #FFECB3;
+}
+#admin-wrap .users li .summary {
+  float: right;
+}
+#admin-wrap .users li .summary span:last-child {
+  margin-left: 20px;
+}
+
+
 @media all and (max-width: 700px) {
   h1 {
     font-size: 28px;

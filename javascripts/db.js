@@ -64,4 +64,26 @@ var DB = {
           xmlhttp.open("GET", "/questions.json", true);
           xmlhttp.send();
     }
+    ,
+    users : function(callback) {
+        var data = [];
+        if(localStorage.getItem('email')) {
+            data.push({
+                email: localStorage.getItem('email'),
+                correct: localStorage.getItem('correct')*1
+            })
+        }
+
+        callback(data);
+    }
+    ,
+    userAnswers: function(email, callback) {
+        this.lookupTable(function(lookup) {
+            var answers = {};
+            for (q in lookup) {
+                answers[q] = localStorage.getItem(q);
+            }
+            callback(answers);
+        })
+    }
 }

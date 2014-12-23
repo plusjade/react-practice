@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopper's Challenge</title>
+  <link href='/stylesheets/app.css' type='text/css' rel='stylesheet' media='all'>
+  <link href='//fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
+  <script src="/javascripts/react.0.12.0.js"></script>
+  <script src="/javascripts/underscore-min.js"></script>
+  <script src="/javascripts/admin.js"></script>
+  <script src="/javascripts/db.js"></script>
+</head>
+<body>
+  <div id="admin"></div>
+  <script>
+      DB.lookupTable(function(lookup) {
+          DB.users(function(users) {
+            React.render(Admin({ users: users, lookup: lookup }), document.getElementById('admin'));
+          });
+      });
+  </script>
+</body>
+</html>
