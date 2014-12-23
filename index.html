@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopper's Challenge</title>
+  <link href='/stylesheets/app.css' type='text/css' rel='stylesheet' media='all'>
+  <link href='//fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/react/0.12.1/react.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+  <script src="/javascripts/app.js"></script>
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+      var xmlhttp;
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 ) {
+               if(xmlhttp.status == 200){
+                  var gateway, questions = [];
+                  var rsp = JSON.parse(xmlhttp.responseText);
+
+                  for(var q in rsp) {
+                      questions.push({
+                        question: q, 
+                        answers: _.shuffle(rsp[q], rsp[q].length)
+                      });
+                  }
+                  questions = _.shuffle(questions, questions.length);
+                  gateway = React.render(Gateway({ questions: questions }), document.getElementById('app'));
+
+                  //gateway.setState({ user: { email: "email@gmail.com"}, start: false })
+               }
+            }
+        }
+
+        xmlhttp.open("GET", "/questions.json", true);
+        xmlhttp.send();
+  </script>
+</body>
+</html>
