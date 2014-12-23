@@ -211,11 +211,6 @@ var Quiz = React.createClass({
                 )
         ;
     }
-    ,
-    start : function(event) {
-        event.preventDefault();
-        this.props.update({ start: true });
-    }
 });
 Quiz = React.createFactory(Quiz);
 
