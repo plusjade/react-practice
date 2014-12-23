@@ -63,7 +63,7 @@ var Splash = React.createClass({
     }
     ,
     render: function() {
-        return React.DOM.div({ id: 'splash-wrap' }
+        return React.DOM.div({ id: 'splash-wrap', className: 'wrap' }
                     , React.DOM.h1(null
                         , "The Instacart Shopper's Challenge"
                     )
@@ -117,7 +117,7 @@ var Intstructions = React.createClass({
     }
     ,
     render: function() {
-        return React.DOM.div({ id: 'instructions-wrap' }
+        return React.DOM.div({ id: 'instructions-wrap', className: 'wrap' }
                     , React.DOM.h1(null
                         , "Hello " + this.props.user.email + " =)"
                     )
@@ -197,7 +197,7 @@ var Quiz = React.createClass({
     render: function() {
         var question = this.props.questions[this.props.active];
 
-        return React.DOM.div({ id: 'quiz-wrap' }
+        return React.DOM.div({ id: 'quiz-wrap', className: 'wrap' }
                     , Timer(
                         {
                             seconds: this.props.seconds,
@@ -246,7 +246,7 @@ var Question = React.createClass({
 
         }, this);
 
-        return React.DOM.div({ className: 'question-wrap' }
+        return React.DOM.div({ className: 'question-wrap wrap' }
                     , React.DOM.h1(null
                         , this.props.question
                     )
@@ -320,7 +320,7 @@ var Complete = React.createClass({
                 break;
         }
 
-        return React.DOM.div({ id: 'complete-wrap' }
+        return React.DOM.div({ id: 'complete-wrap', className: 'wrap' }
                     , React.DOM.h1(null, message)
                     , React.DOM.h1(null
                         , 'Great Job, thank You!'

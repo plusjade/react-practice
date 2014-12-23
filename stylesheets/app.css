@@ -32,10 +32,6 @@ h4 {
   margin:0 20px;
 }
 
-#splash-wrap h1,
-#instructions-wrap h1,
-#complete-wrap h1 { margin: 40px 0; }
-
 #splash-wrap h2{ margin-bottom:  40px; }
 #splash-wrap input {
   display: block;
@@ -117,8 +113,6 @@ button.disabled {
    margin: 40px 0;
 }
 
-#admin-wrap {
-}
 #admin-wrap h1 {
   text-align: center;
 }
@@ -171,9 +165,8 @@ button.disabled {
     font-size: 20px;
   }
 
-  #instructions-wrap ul {
-    width: auto;
+  ul, ol {
+    width: auto !important;
   }
 
 }
-
