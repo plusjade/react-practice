@@ -86,9 +86,11 @@ button.disabled {
   margin-bottom: 40px;
 }
 .question-wrap input {
-  visibility: hidden;
+  opacity: 0;
 }
 .question-wrap img {
+  width: 200px;
+  height: 200px;
   padding: 10px;
   border: 2px solid transparent;
   cursor: pointer;

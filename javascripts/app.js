@@ -217,6 +217,7 @@ var Question = React.createClass({
     ,
     componentDidMount : function() {
         window.scrollTo(0, 0);
+        this.refs['choice-0'].getDOMNode().focus();
     }
     ,
     getDefaultProps : function() {
