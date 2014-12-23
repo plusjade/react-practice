@@ -11,13 +11,16 @@ var Gateway = React.createClass({
     ,
     render: function() {
         var page;
-        if(this.state.user.email) {
+        if(this.state.doesUserExist) {
+            page = Complete({ reason: 'exist' });
+        }
+        else if(this.state.user.email) {
             if(this.state.start) {
                 if(this.state.seconds === 0) {
-                    page = Complete({ time: true });
+                    page = Complete({ reason: 'time' });
                 }
                 else if(this.state.active > (this.props.questions.length-1)) {
-                    page = Complete({ complete: true });
+                    page = Complete({ reason: 'complete' });
                 }
                 else {
                     page = Quiz({
@@ -297,15 +300,20 @@ var Complete = React.createClass({
     ,
     render: function() {
         var message;
-        if(this.props.time) {
-            message = React.DOM.h1(null, 'Time is up!')
-        }
-        else if(this.props.complete) {
-            message = React.DOM.h1(null, "You're Finished!")
+        switch(this.props.reason) {
+            case 'time':
+                message = 'Time is up!';
+                break;
+            case 'complete':
+                message = "You're finished!";
+                break;
+            case 'exist':
+                message = "You've already taken the Challenge!";
+                break;
         }
 
         return React.DOM.div({ id: 'complete-wrap' }
-                    , message
+                    , React.DOM.h1(null, message)
                     , React.DOM.h1(null
                         , 'Great Job, thank You!'
                     )
