@@ -92,7 +92,16 @@ var Splash = React.createClass({
         event.preventDefault();
         var email = this.refs.email.getDOMNode().value;
         if(email) { // todo verify the email
-            this.props.update({ user: { email: email }})
+            var update = this.props.update;
+            DB.doesUserExist(email, function(exist) {
+                if(exist) {
+                    update({ doesUserExist : true });
+                }
+                else {
+                    DB.saveUser(email);
+                    update({ user: { email: email } });
+                }
+            })
         }
     }
 });
@@ -278,14 +287,17 @@ var Question = React.createClass({
             }
         }
         if(value) {
-            var q = {};
-            q[this.props.question] = value;
-            console.log(q);
-
             this.props.update({
                 active: (this.props.active+1),
                 selected: false
             });
+
+            DB.saveUserAnswer(this.props.user.email,
+                            {
+                                question : this.props.question,
+                                answer: value
+                            }
+                        )
         }
         else {
             this.props.update({ errors: { emptyQuestion : true } });
