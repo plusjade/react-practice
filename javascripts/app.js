@@ -157,7 +157,7 @@ var Timer = React.createClass({
     }
     ,
     getDefaultProps : function() {
-        return { seconds: 20 }
+        return { seconds: 120 }
     }
     ,
     render: function() {
